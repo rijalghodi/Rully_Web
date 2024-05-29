@@ -135,7 +135,7 @@ export function Hero() {
                 size="lg"
                 radius={100}
                 variant="filled"
-                leftSection={<IconUpload />}
+                leftSection={<IconUpload size={22} />}
               >
                 Unggah Gambar
               </Button>
