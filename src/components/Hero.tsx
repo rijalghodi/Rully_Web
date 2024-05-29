@@ -32,7 +32,7 @@ export function Hero() {
           height={80}
           width={80}
           alt="Sparkles"
-          placeholder="blur"
+          // placeholder="blur"
         />
       </Box>
       <Box visibleFrom="lg">
@@ -41,7 +41,7 @@ export function Hero() {
           height={80}
           width={80}
           alt="Sparkles"
-          placeholder="blur"
+          // placeholder="blur"
           style={{
             position: 'absolute',
             right: -120,
@@ -65,8 +65,8 @@ export function Hero() {
             src={heroImage}
             height={0}
             width={0}
-            alt="preview paper studio"
-            placeholder="blur"
+            alt="hero rully"
+            // placeholder="blur"
             className={classes.hero}
           />
           <Box maw={500}>
