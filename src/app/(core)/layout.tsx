@@ -16,14 +16,7 @@ type Props = {
 };
 export default function CoreLayout({ children }: Props) {
   return (
-    <AppShell
-      header={{ height: 70 }}
-      aside={{
-        width: '100%',
-        breakpoint: 'md',
-      }}
-      withBorder={false}
-    >
+    <AppShell header={{ height: 70 }} withBorder={false}>
       <AppShell.Header>
         <Group
           gap="md"
