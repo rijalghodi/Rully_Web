@@ -1,0 +1,57 @@
+{
+  "name": "rully-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "prepare": "husky",
+    "lint": "next lint",
+    "lint:fix": "eslint src --fix && yarn format",
+    "lint:strict": "eslint --max-warnings=0 src",
+    "typecheck": "tsc --noEmit --incremental false",
+    "format": "prettier -w .",
+    "postbuild": "next-sitemap"
+  },
+  "dependencies": {
+    "@mantine/core": "^7.6.2",
+    "@mantine/hooks": "^7.6.2",
+    "@next/third-parties": "^14.2.3",
+    "@tabler/icons-react": "^3.2.0",
+    "next": "14.1.4",
+    "next-sitemap": "^4.2.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "sharp": "^0.33.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^7.3.1",
+    "@typescript-eslint/parser": "^7.3.1",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8",
+    "eslint-config-next": "14.1.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-simple-import-sort": "^12.0.0",
+    "eslint-plugin-unused-imports": "^3.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2",
+    "postcss": "^8.4.38",
+    "postcss-preset-mantine": "^1.13.0",
+    "postcss-simple-vars": "^7.0.1",
+    "prettier": "^3.2.5",
+    "typescript": "^5"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --max-warnings=0",
+      "prettier -w"
+    ],
+    "**/*.{json,css,scss,md}": [
+      "prettier -w"
+    ]
+  }
+}

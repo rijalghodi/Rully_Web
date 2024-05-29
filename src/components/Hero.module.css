@@ -1,0 +1,14 @@
+/* styles.css */
+.hero {
+  width: 500px;
+  height: auto;
+}
+
+@media (max-width: 1200px) {
+  .hero {
+    width: 100%;
+    max-width: 400px;
+    min-width: 250px;
+    height: auto;
+  }
+}
