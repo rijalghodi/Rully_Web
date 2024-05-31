@@ -4,7 +4,6 @@ import {
   Box,
   Button,
   Center,
-  FileButton,
   Flex,
   Group,
   Overlay,
@@ -20,12 +19,26 @@ import React, { useEffect, useState } from 'react';
 
 import classes from './Upload.module.css';
 
+import { RecognizeTask } from './RecognizeTask';
+
 import Sparkles from '~/sparkles.png';
 
 export function UploadImageBox() {
   const [file, setFile] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [service, setService] = useState<string | null>('detect');
+
+  const handleInputFile = () => {
+    const btn = document.getElementById('fileInput');
+    btn?.click();
+  };
+
+  const handleFileChange = (event: any) => {
+    const files = event.target.files;
+    if (files.length > 0) {
+      setFile(files[0]);
+    }
+  };
 
   useEffect(() => {
     if (file) {
@@ -36,6 +49,14 @@ export function UploadImageBox() {
 
   return (
     <>
+      <input
+        type="file"
+        id="fileInput"
+        accept="image/*"
+        style={{ display: 'none' }}
+        onChange={handleFileChange}
+        multiple={false}
+      />
       {!file && (
         <Stack align="center" maw={400} pos="relative" pt="md" pb="xl">
           <Image
@@ -53,21 +74,15 @@ export function UploadImageBox() {
           <Title order={2} fz={28} fw={700} ta="center">
             Unggah Gambar Jawaban Pilgan untuk Dinilai
           </Title>
-          <FileButton
-            onChange={setFile}
-            accept="image/png,image/jpeg,image/jpg"
+
+          <Button
+            size="lg"
+            radius={100}
+            leftSection={<IconUpload size={20} />}
+            onClick={handleInputFile}
           >
-            {(props) => (
-              <Button
-                size="lg"
-                radius={100}
-                leftSection={<IconUpload size={20} />}
-                {...props}
-              >
-                Unggah Gambar
-              </Button>
-            )}
-          </FileButton>
+            Unggah Gambar
+          </Button>
         </Stack>
       )}
       {file && imageUrl && (
@@ -100,28 +115,22 @@ export function UploadImageBox() {
                   className={classes['image-preview']}
                   // placeholder="blur"
                 />
-                <FileButton
-                  onChange={setFile}
-                  accept="image/png,image/jpeg,image/jpg"
-                >
-                  {(props) => (
-                    <UnstyledButton {...props} h={0} w={0}>
-                      <Overlay
-                        className={classes['image-preview-overlay']}
-                        color="#000"
-                        backgroundOpacity={0.5}
-                        zIndex={1}
-                      >
-                        <Center h="100%">
-                          <Group c="white" justify="center" align="center">
-                            <IconUpload size={22} />
-                            <Text fz="xl">Ganti Gambar</Text>
-                          </Group>
-                        </Center>
-                      </Overlay>
-                    </UnstyledButton>
-                  )}
-                </FileButton>
+
+                <UnstyledButton onClick={handleInputFile}>
+                  <Overlay
+                    className={classes['image-preview-overlay']}
+                    color="#000"
+                    backgroundOpacity={0.5}
+                    zIndex={1}
+                  >
+                    <Center h="100%">
+                      <Group c="white" justify="center" align="center">
+                        <IconUpload size={22} />
+                        <Text fz="xl">Ganti Gambar</Text>
+                      </Group>
+                    </Center>
+                  </Overlay>
+                </UnstyledButton>
               </Box>
             </Group>
             <Tabs
@@ -151,19 +160,7 @@ export function UploadImageBox() {
                 </Tabs.Tab>
               </Tabs.List>
               <Tabs.Panel value="detect">
-                <Box>
-                  <Group justify="center" pt={24}>
-                    <Button
-                      color="yellow"
-                      size="md"
-                      radius={100}
-                      variant="filled"
-                      leftSection={<IconSparkles size={18} />}
-                    >
-                      Jalankan Deteksi
-                    </Button>
-                  </Group>
-                </Box>
+                <RecognizeTask file={file} onInputFile={handleInputFile} />
               </Tabs.Panel>
               <Tabs.Panel value="grade">
                 <Box>

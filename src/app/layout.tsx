@@ -14,8 +14,10 @@ const font = Poppins({
 // Import styles of packages that you've installed.
 // All packages except `@mantine/hooks` require styles imports
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
 
 import '@mantine/core/styles.css';
+import '@mantine/notifications/styles.css';
 
 export const metadata: Metadata = {
   title: {
@@ -55,6 +57,7 @@ export default function RootLayout({
         <MantineProvider
           theme={{ ...theme, fontFamily: font.style.fontFamily }}
         >
+          <Notifications position="top-center" />
           {children}
         </MantineProvider>
       </body>
