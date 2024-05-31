@@ -59,7 +59,7 @@ export function UploadImageBox() {
         multiple={false}
       />
       {!file && (
-        <Stack align="center" maw={400} pt="md" pb="xl" mx="auto" py={100}>
+        <Stack align="center" maw={400} mx="auto" py={100}>
           <Title order={2} fz={28} fw={700} ta="center" pos="relative">
             <Image
               src={Sparkles}
