@@ -109,19 +109,31 @@ export function RecognizeTask({ file, onInputFile }: Props) {
             Deteksi Tidak Ditemukan
           </Text>
           <Text fz="sm" ta="center" component="p">
-            Silakan mengganti Gambar
+            Silakan mengganti gambar atau mengulang deteksi
           </Text>
-          <Button
-            color="yellow"
-            size="sm"
-            radius={100}
-            variant="filled"
-            leftSection={<IconUpload size={16} />}
-            mt="sm"
-            onClick={() => onInputFile?.()}
-          >
-            Ganti Gambar
-          </Button>
+          <Group gap="xs" mt="sm">
+            <Button
+              size="sm"
+              radius={100}
+              variant="default"
+              leftSection={<IconUpload size={16} />}
+              onClick={() => onInputFile?.()}
+            >
+              Ganti Gambar
+            </Button>
+            <Button
+              color="yellow"
+              size="sm"
+              radius={100}
+              variant="filled"
+              leftSection={<IconSparkles size={18} />}
+              onClick={handleRecognizeSheet}
+              loading={loading}
+              loaderProps={{ type: 'dots' }}
+            >
+              Ulang Deteksi
+            </Button>
+          </Group>
         </Stack>
       </Center>
     );
