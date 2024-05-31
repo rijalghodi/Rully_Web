@@ -20,6 +20,8 @@ import React, { useEffect, useState } from 'react';
 
 import classes from './Upload.module.css';
 
+import Sparkles from '~/sparkles.png';
+
 export function UploadImageBox() {
   const [file, setFile] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
@@ -37,7 +39,7 @@ export function UploadImageBox() {
       {!file && (
         <Stack align="center" maw={400} pos="relative" pt="md" pb="xl">
           <Image
-            src="/sparkles.png"
+            src={Sparkles}
             alt="Sparkles"
             placeholder="blur"
             width={32}
