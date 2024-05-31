@@ -101,6 +101,14 @@ export function RecognizeTask({ file, onInputFile }: Props) {
     );
   }
 
+  if (loading) {
+    return (
+      <Center h={200} w="100%">
+        <Loader type="dots" />
+      </Center>
+    );
+  }
+
   if (detectedMarks) {
     return (
       <Center h="200">
@@ -135,13 +143,6 @@ export function RecognizeTask({ file, onInputFile }: Props) {
             </Button>
           </Group>
         </Stack>
-      </Center>
-    );
-  }
-  if (loading) {
-    return (
-      <Center h={200} w="100%">
-        <Loader type="dots" />
       </Center>
     );
   }

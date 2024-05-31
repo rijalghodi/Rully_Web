@@ -119,6 +119,14 @@ export function GradeTaskResult({
     );
   }
 
+  if (loading) {
+    return (
+      <Center mih={100} w="100%" py="md">
+        <Loader type="dots" />
+      </Center>
+    );
+  }
+
   if (detectedMarks) {
     return (
       <Center mih={100} py="md">
@@ -153,13 +161,6 @@ export function GradeTaskResult({
             </Button>
           </Group>
         </Stack>
-      </Center>
-    );
-  }
-  if (loading) {
-    return (
-      <Center mih={100} w="100%" py="md">
-        <Loader type="dots" />
       </Center>
     );
   }
