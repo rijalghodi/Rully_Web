@@ -83,11 +83,16 @@ export function RecognizeTask({ file, onInputFile }: Props) {
             detectedMarks,
             detectedMarks.length > 10 ? 10 : 5,
           ).map((stack, i) => (
-            <Stack gap={4} w={120} key={i}>
+            <Stack gap={8} w={120} key={i}>
               {stack.map((item, j) => (
-                <Text key={j}>
-                  {i + j + 1}. {item}
-                </Text>
+                <Group gap={4} key={j}>
+                  <Text span w={24}>
+                    {i + j + 1}.
+                  </Text>
+                  <Text span tt="uppercase" fw={500}>
+                    {item}
+                  </Text>
+                </Group>
               ))}
             </Stack>
           ))}

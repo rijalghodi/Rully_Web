@@ -1,6 +1,5 @@
-import { Accordion, Stack } from '@mantine/core';
+import { Accordion, Stack, Text } from '@mantine/core';
 import { notifications } from '@mantine/notifications';
-import { IconEditCircle } from '@tabler/icons-react';
 import React, { useEffect, useState } from 'react';
 
 import { apiClient } from '@/service/api-client';
@@ -74,10 +73,13 @@ export function GradeTask({ file, onInputFile }: Props) {
   return (
     <Stack w="100%" gap="lg">
       <Stack w="100%" gap="sm" align="flex-start">
-        <Accordion w="100%" variant="separated" radius="md">
+        <Accordion w="100%" variant="separated" radius="md" defaultValue="1">
           <Accordion.Item value="1">
-            <Accordion.Control icon={<IconEditCircle size={16} />}>
-              Kunci Jawaban
+            <Accordion.Control>
+              Kunci Jawaban{' '}
+              <Text span fz="xs">
+                (Wajib Diisi)
+              </Text>
             </Accordion.Control>
             <Accordion.Panel>
               <Stack>
@@ -85,8 +87,9 @@ export function GradeTask({ file, onInputFile }: Props) {
                 <CorrectMarkInput
                   correctMarks={correctMarks ?? []}
                   onMarkChange={(mark, index) => {
-                    correctMarks[index] = mark;
-                    setCorrectMarks(correctMarks);
+                    const newCorrectMarks = [...correctMarks];
+                    newCorrectMarks[index] = mark;
+                    setCorrectMarks(newCorrectMarks);
                   }}
                   nQuestions={debNQuestion}
                 />

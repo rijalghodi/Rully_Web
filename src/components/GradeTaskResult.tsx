@@ -1,5 +1,5 @@
 import {
-  Box,
+  Badge,
   Button,
   Center,
   Flex,
@@ -53,8 +53,8 @@ export function GradeTaskResult({
 
   if (detectedMarks && detectedMarks.length > 0) {
     return (
-      <Box w="100%">
-        <Group justify="space-between" mb="sm">
+      <Stack gap="xs" w="100%">
+        <Group justify="space-between">
           <Text component="p" fw={600}>
             Hasil Penilaian
           </Text>
@@ -71,31 +71,51 @@ export function GradeTaskResult({
             Ulang Penilaian
           </Button>
         </Group>
-        <Text fz="xl" fw={600}>
-          Skor: {score}
+        <Text fz={34} fw={700} ta="center">
+          Skor : {score}
         </Text>
         <Flex rowGap="md" columnGap="sm" wrap="wrap">
           {convertToGroupedArray(wiseMarks, wiseMarks.length > 10 ? 10 : 5).map(
             (stack, i) => (
-              <Stack gap={4} w={140} key={i}>
+              <Stack gap={8} w={140} key={i}>
                 {stack.map((item, j) => (
-                  <Text key={j}>
-                    {i + j + 1}.{' '}
-                    <Text span c={item.isCorrect ? 'green' : 'red'}>
-                      {item.detectedMark}
+                  <Group gap={4} key={j} pos="relative">
+                    <Text span w={24}>
+                      {i + j + 1}.
                     </Text>
+                    {item.detectedMark && (
+                      <Text
+                        span
+                        c={item.isCorrect ? 'green' : 'red.7'}
+                        tt="uppercase"
+                        fw={500}
+                      >
+                        {item.detectedMark}
+                      </Text>
+                    )}
                     {!item.isCorrect && (
-                      <Text span c="red">
+                      <Text span c="yellow.7" tt="uppercase">
                         ({item.correctMark})
                       </Text>
                     )}
-                  </Text>
+                  </Group>
                 ))}
               </Stack>
             ),
           )}
         </Flex>
-      </Box>
+        <Group justify="center">
+          <Badge variant="dot" color="green" tt="capitalize" fw={400}>
+            Jawaban Siswa Benar
+          </Badge>
+          <Badge variant="dot" color="red.7" tt="capitalize" fw={400}>
+            Jawaban Siswa Salah
+          </Badge>
+          <Badge variant="dot" color="yellow.7" tt="capitalize" fw={400}>
+            Kunci Jawaban
+          </Badge>
+        </Group>
+      </Stack>
     );
   }
 
@@ -107,19 +127,31 @@ export function GradeTaskResult({
             Penilaian Tidak Terdeteksi
           </Text>
           <Text fz="sm" ta="center" component="p">
-            Silakan mengganti Gambar
+            Silakan mengganti Gambar atau ulangi penilaian
           </Text>
-          <Button
-            color="yellow"
-            size="sm"
-            radius={100}
-            variant="filled"
-            leftSection={<IconUpload size={16} />}
-            mt="sm"
-            onClick={() => onInputFile?.()}
-          >
-            Ganti Gambar
-          </Button>
+          <Group mt="sm" gap="xs">
+            <Button
+              size="sm"
+              radius={100}
+              variant="default"
+              leftSection={<IconUpload size={16} />}
+              onClick={() => onInputFile?.()}
+            >
+              Ganti Gambar
+            </Button>
+            <Button
+              color="yellow"
+              size="sm"
+              radius={100}
+              variant="filled"
+              leftSection={<IconSparkles size={18} />}
+              onClick={onGrade}
+              loading={loading}
+              loaderProps={{ type: 'dots' }}
+            >
+              Ulang Penilaian
+            </Button>
+          </Group>
         </Stack>
       </Center>
     );
