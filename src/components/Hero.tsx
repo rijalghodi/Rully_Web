@@ -8,8 +8,8 @@ import {
   Text,
   Title,
 } from '@mantine/core';
-import { IconUpload } from '@tabler/icons-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 import classes from './Hero.module.css';
@@ -18,7 +18,7 @@ import heroImage from '~/hero.png';
 import sparkles from '~/sparkles.png';
 export function Hero() {
   return (
-    <Stack pos="relative">
+    <Stack pos="relative" pt="md" pb="xl">
       <Box
         style={{
           position: 'absolute',
@@ -32,7 +32,7 @@ export function Hero() {
           height={80}
           width={80}
           alt="Sparkles"
-          // placeholder="blur"
+          placeholder="blur"
         />
       </Box>
       <Box visibleFrom="lg">
@@ -41,7 +41,7 @@ export function Hero() {
           height={80}
           width={80}
           alt="Sparkles"
-          // placeholder="blur"
+          placeholder="blur"
           style={{
             position: 'absolute',
             right: -120,
@@ -65,8 +65,8 @@ export function Hero() {
             src={heroImage}
             height={0}
             width={0}
-            alt="hero rully"
-            // placeholder="blur"
+            alt="Hero Rully"
+            placeholder="blur"
             className={classes.hero}
           />
           <Box maw={500}>
@@ -100,15 +100,17 @@ export function Hero() {
             </Text>
           </Box>
         </Flex>
+
         <Button
           hiddenFrom="sm"
           color="yellow"
           size="md"
           radius="xl"
           variant="filled"
-          leftSection={<IconUpload />}
+          component={Link}
+          href="/upload"
         >
-          Unggah Gambar
+          Coba Sekarang
         </Button>
         <Paper
           visibleFrom="sm"
@@ -131,13 +133,15 @@ export function Hero() {
                 </Text>
               </Box>
               <Button
+                visibleFrom="sm"
                 color="yellow"
-                size="lg"
-                radius={100}
+                size="md"
+                radius="xl"
                 variant="filled"
-                leftSection={<IconUpload size={22} />}
+                component={Link}
+                href="/upload"
               >
-                Unggah Gambar
+                Coba Sekarang
               </Button>
             </Stack>
           </Center>

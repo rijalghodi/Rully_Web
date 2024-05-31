@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, AppShell, Group, rem, Tooltip } from '@mantine/core';
+import { ActionIcon, AppShell, Group, Tooltip } from '@mantine/core';
 import { Text } from '@mantine/core';
 import { IconBrandGithub, IconMail } from '@tabler/icons-react';
 import Image from 'next/image';
@@ -32,7 +32,13 @@ export default function CoreLayout({ children }: Props) {
         >
           <Link href="/">
             <Group gap={0}>
-              <Image src={Logo} alt="logo" height={40} width={40} />
+              <Image
+                src={Logo}
+                alt="Logo"
+                height={40}
+                width={40}
+                placeholder="blur"
+              />
               <Text fw={600} c="dark 5" fz="lg">
                 Rully
               </Text>
@@ -77,11 +83,7 @@ export default function CoreLayout({ children }: Props) {
           </Group>
         </Group>
       </AppShell.Header>
-      <AppShell.Main
-        pt={`calc(${rem(70)} + var(--mantine-spacing-md))`}
-        pb="lg"
-        mih="calc(100vh - 60px)"
-      >
+      <AppShell.Main pt="60px" mih="calc(100vh - 60px - 60px)">
         {children}
       </AppShell.Main>
       <Footer />

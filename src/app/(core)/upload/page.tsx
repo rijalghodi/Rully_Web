@@ -1,12 +1,19 @@
-import { Container, Stack } from '@mantine/core';
+import { Center } from '@mantine/core';
 import React from 'react';
+
+import { UploadImageBox } from '@/components/UploadImageBox';
 
 export default function Home() {
   return (
-    <Stack w="100%" pos="relative">
-      <Container maw={1400} px={{ base: 'md', sm: 'xl' }} component="section">
-        Upload
-      </Container>
-    </Stack>
+    <Center
+      mih="calc(100vh - 60px - 60px)"
+      maw={1200}
+      w="100%"
+      px={{ base: 'md', sm: 'xl' }}
+      component="section"
+      mx="auto"
+    >
+      <UploadImageBox />
+    </Center>
   );
 }
