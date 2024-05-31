@@ -1,4 +1,4 @@
-# Paper Studio - Front End Source Code
+# Rully - AI-Powered Universal Bubble Sheet Grader - Web App
 
 ## Features
 
