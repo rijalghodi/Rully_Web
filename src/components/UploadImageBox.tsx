@@ -89,6 +89,7 @@ export function UploadImageBox() {
                   lineHeight: 0,
                   verticalAlign: 'middle',
                   fontSize: 0,
+                  boxShadow: 'rgba(0, 0, 0, 0.1) 0px 10px 50px',
                 }}
               >
                 <Image
@@ -97,7 +98,7 @@ export function UploadImageBox() {
                   width={0}
                   height={0}
                   className={classes['image-preview']}
-                  placeholder="blur"
+                  // placeholder="blur"
                 />
                 <FileButton
                   onChange={setFile}
