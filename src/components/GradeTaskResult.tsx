@@ -129,7 +129,7 @@ export function GradeTaskResult({
           <Text fz="sm" ta="center" component="p">
             Silakan mengganti Gambar atau ulangi penilaian
           </Text>
-          <Group mt="sm" gap="xs">
+          <Group mt="sm" gap="xs" justify="center">
             <Button
               size="sm"
               radius={100}

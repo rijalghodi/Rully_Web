@@ -111,7 +111,7 @@ export function RecognizeTask({ file, onInputFile }: Props) {
           <Text fz="sm" ta="center" component="p">
             Silakan mengganti gambar atau mengulang deteksi
           </Text>
-          <Group gap="xs" mt="sm">
+          <Group gap="xs" mt="sm" justify="center">
             <Button
               size="sm"
               radius={100}
