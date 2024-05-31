@@ -1,7 +1,7 @@
-export function convertToGroupedArray(
-  originalArray: string[],
+export function convertToGroupedArray<T>(
+  originalArray: T[],
   n?: number,
-): string[][] {
+): T[][] {
   return originalArray.reduce((accumulator, currentValue, index) => {
     n = n ?? 5;
     // Determine the current chunk index
@@ -16,5 +16,5 @@ export function convertToGroupedArray(
     accumulator[chunkIndex].push(currentValue);
 
     return accumulator;
-  }, [] as string[][]);
+  }, [] as T[][]);
 }

@@ -79,7 +79,10 @@ export function RecognizeTask({ file, onInputFile }: Props) {
           </Button>
         </Group>
         <Flex rowGap="md" columnGap="sm" wrap="wrap">
-          {convertToGroupedArray(detectedMarks).map((stack, i) => (
+          {convertToGroupedArray(
+            detectedMarks,
+            detectedMarks.length > 10 ? 10 : 5,
+          ).map((stack, i) => (
             <Stack gap={4} w={120} key={i}>
               {stack.map((item, j) => (
                 <Text key={j}>

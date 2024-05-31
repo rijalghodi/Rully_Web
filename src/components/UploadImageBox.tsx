@@ -13,12 +13,13 @@ import {
   Title,
   UnstyledButton,
 } from '@mantine/core';
-import { IconSparkles, IconUpload } from '@tabler/icons-react';
+import { IconUpload } from '@tabler/icons-react';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 import classes from './Upload.module.css';
 
+import { GradeTask } from './GradeTask';
 import { RecognizeTask } from './RecognizeTask';
 
 import Sparkles from '~/sparkles.png';
@@ -58,7 +59,14 @@ export function UploadImageBox() {
         multiple={false}
       />
       {!file && (
-        <Stack align="center" maw={400} pos="relative" pt="md" pb="xl">
+        <Stack
+          align="center"
+          maw={400}
+          pos="relative"
+          pt="md"
+          pb="xl"
+          mx="auto"
+        >
           <Image
             src={Sparkles}
             alt="Sparkles"
@@ -163,19 +171,7 @@ export function UploadImageBox() {
                 <RecognizeTask file={file} onInputFile={handleInputFile} />
               </Tabs.Panel>
               <Tabs.Panel value="grade">
-                <Box>
-                  <Group justify="center" pt={24}>
-                    <Button
-                      color="yellow"
-                      size="md"
-                      radius={100}
-                      variant="filled"
-                      leftSection={<IconSparkles size={18} />}
-                    >
-                      Jalankan Penilaian
-                    </Button>
-                  </Group>
-                </Box>
+                <GradeTask file={file} onInputFile={handleInputFile} />
               </Tabs.Panel>
             </Tabs>
           </Flex>
