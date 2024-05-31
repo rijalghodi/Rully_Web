@@ -59,27 +59,20 @@ export function UploadImageBox() {
         multiple={false}
       />
       {!file && (
-        <Stack
-          align="center"
-          maw={400}
-          pos="relative"
-          pt="md"
-          pb="xl"
-          mx="auto"
-        >
-          <Image
-            src={Sparkles}
-            alt="Sparkles"
-            placeholder="blur"
-            width={32}
-            height={32}
-            style={{
-              position: 'absolute',
-              top: -20,
-              right: -20,
-            }}
-          />
-          <Title order={2} fz={28} fw={700} ta="center">
+        <Stack align="center" maw={400} pt="md" pb="xl" mx="auto" py={100}>
+          <Title order={2} fz={28} fw={700} ta="center" pos="relative">
+            <Image
+              src={Sparkles}
+              alt="Sparkles"
+              placeholder="blur"
+              width={32}
+              height={32}
+              style={{
+                position: 'absolute',
+                top: -32,
+                right: -20,
+              }}
+            />
             Unggah Gambar Jawaban Pilgan untuk Dinilai
           </Title>
 
