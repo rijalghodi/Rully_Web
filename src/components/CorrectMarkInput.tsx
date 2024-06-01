@@ -18,7 +18,7 @@ export function CorrectMarkInput({
         Array.from({ length: Number(nQuestions) }, (_, index) => index),
         Number(nQuestions) > 10 ? 10 : 5,
       ).map((stack, i) => (
-        <Stack gap="sm" w={166} key={i}>
+        <Stack gap="sm" w={184} key={i}>
           {stack.map((item) => (
             <Group key={item} gap={10}>
               <Text w={24}>{item + 1}.</Text>

@@ -97,42 +97,45 @@ export function UploadImageBox() {
             mih={400}
           >
             <Group justify="flex-end" flex={2}>
-              <Box
-                pos="relative"
-                style={{
-                  borderRadius: 12,
-                  overflow: 'hidden',
-                  lineHeight: 0,
-                  verticalAlign: 'middle',
-                  fontSize: 0,
-                  boxShadow: 'rgba(0, 0, 0, 0.1) 0px 10px 50px',
-                }}
-              >
-                <Image
-                  src={imageUrl}
-                  alt="Pratinjau"
-                  width={0}
-                  height={0}
-                  className={classes['image-preview']}
-                  // placeholder="blur"
-                />
-
-                <UnstyledButton onClick={handleInputFile}>
-                  <Overlay
-                    className={classes['image-preview-overlay']}
-                    color="#000"
-                    backgroundOpacity={0.5}
-                    zIndex={1}
-                  >
-                    <Center h="100%">
-                      <Group c="white" justify="center" align="center">
-                        <IconUpload size={22} />
-                        <Text fz="xl">Ganti Gambar</Text>
-                      </Group>
-                    </Center>
-                  </Overlay>
-                </UnstyledButton>
-              </Box>
+              <Stack gap={8}>
+                <Box
+                  pos="relative"
+                  style={{
+                    borderRadius: 12,
+                    overflow: 'hidden',
+                    lineHeight: 0,
+                    verticalAlign: 'middle',
+                    fontSize: 0,
+                    boxShadow: 'rgba(0, 0, 0, 0.1) 0px 10px 50px',
+                  }}
+                >
+                  <Image
+                    src={imageUrl}
+                    alt="Pratinjau"
+                    width={0}
+                    height={0}
+                    className={classes['image-preview']}
+                  />
+                  <UnstyledButton onClick={handleInputFile}>
+                    <Overlay
+                      className={classes['image-preview-overlay']}
+                      color="#000"
+                      backgroundOpacity={0.6}
+                      zIndex={1}
+                    >
+                      <Center h="100%">
+                        <Group c="white" justify="center" align="center">
+                          <IconUpload size={22} />
+                          <Text fz="xl">Ganti Gambar</Text>
+                        </Group>
+                      </Center>
+                    </Overlay>
+                  </UnstyledButton>
+                </Box>
+                <Text fz="xs" ta="center">
+                  {file.name}
+                </Text>
+              </Stack>
             </Group>
             <Tabs
               miw={300}

@@ -51,6 +51,14 @@ export function GradeTaskResult({
       };
     }) ?? [];
 
+  if (loading) {
+    return (
+      <Center mih={100} w="100%" py="md">
+        <Loader type="dots" />
+      </Center>
+    );
+  }
+
   if (detectedMarks && detectedMarks.length > 0) {
     return (
       <Stack gap="xs" w="100%">
@@ -74,25 +82,24 @@ export function GradeTaskResult({
         <Text fz={34} fw={700} ta="center">
           Skor : {score}
         </Text>
-        <Flex rowGap="md" columnGap="sm" wrap="wrap">
+        <Flex rowGap="md" columnGap="xs" wrap="wrap">
           {convertToGroupedArray(wiseMarks, wiseMarks.length > 10 ? 10 : 5).map(
             (stack, i) => (
-              <Stack gap={8} w={140} key={i}>
+              <Stack gap={8} w={184} key={i}>
                 {stack.map((item, j) => (
                   <Group gap={4} key={j} pos="relative">
                     <Text span w={24}>
-                      {i + j + 1}.
+                      {i * (wiseMarks.length > 10 ? 10 : 5) + j + 1}.
                     </Text>
-                    {item.detectedMark && (
-                      <Text
-                        span
-                        c={item.isCorrect ? 'green' : 'red.7'}
-                        tt="uppercase"
-                        fw={500}
-                      >
-                        {item.detectedMark}
-                      </Text>
-                    )}
+
+                    <Text
+                      span
+                      c={item.isCorrect ? 'green' : 'red.7'}
+                      tt="uppercase"
+                      fw={500}
+                    >
+                      {item.detectedMark ?? 'NO ANSWER'}
+                    </Text>
                     {!item.isCorrect && (
                       <Text span c="yellow.7" tt="uppercase">
                         ({item.correctMark})
@@ -104,7 +111,7 @@ export function GradeTaskResult({
             ),
           )}
         </Flex>
-        <Group justify="center">
+        <Group justify="center" gap="xs" py="xs">
           <Badge variant="dot" color="green" tt="capitalize" fw={400}>
             Jawaban Siswa Benar
           </Badge>
@@ -116,14 +123,6 @@ export function GradeTaskResult({
           </Badge>
         </Group>
       </Stack>
-    );
-  }
-
-  if (loading) {
-    return (
-      <Center mih={100} w="100%" py="md">
-        <Loader type="dots" />
-      </Center>
     );
   }
 

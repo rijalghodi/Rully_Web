@@ -58,6 +58,14 @@ export function RecognizeTask({ file, onInputFile }: Props) {
     setDetectedMarks(null);
   }, [file]);
 
+  if (loading) {
+    return (
+      <Center h={200} w="100%">
+        <Loader type="dots" />
+      </Center>
+    );
+  }
+
   if (detectedMarks && detectedMarks.length > 0) {
     return (
       <Box w="100%">
@@ -83,11 +91,11 @@ export function RecognizeTask({ file, onInputFile }: Props) {
             detectedMarks,
             detectedMarks.length > 10 ? 10 : 5,
           ).map((stack, i) => (
-            <Stack gap={8} w={120} key={i}>
+            <Stack gap={8} w={184} key={i}>
               {stack.map((item, j) => (
                 <Group gap={4} key={j}>
                   <Text span w={24}>
-                    {i + j + 1}.
+                    {i * (detectedMarks.length > 10 ? 10 : 5) + j + 1}..
                   </Text>
                   <Text span tt="uppercase" fw={500}>
                     {item}
@@ -98,14 +106,6 @@ export function RecognizeTask({ file, onInputFile }: Props) {
           ))}
         </Flex>
       </Box>
-    );
-  }
-
-  if (loading) {
-    return (
-      <Center h={200} w="100%">
-        <Loader type="dots" />
-      </Center>
     );
   }
 

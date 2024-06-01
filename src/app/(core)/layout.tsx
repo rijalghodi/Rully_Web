@@ -2,7 +2,7 @@
 
 import { ActionIcon, AppShell, Group, Tooltip } from '@mantine/core';
 import { Text } from '@mantine/core';
-import { IconBrandGithub, IconMail } from '@tabler/icons-react';
+import { IconBrandGithub, IconMail, IconPhone } from '@tabler/icons-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -45,9 +45,9 @@ export default function CoreLayout({ children }: Props) {
               {/* <Text pl="sm">AI-Powered Universal Bubble Sheet Grader</Text> */}
             </Group>
           </Link>
-          <Group gap="sm">
+          <Group gap="xs">
             <Tooltip
-              label="Inspect Source Code"
+              label="Lihat Source Code"
               fz="sm"
               position="left"
               withArrow
@@ -63,12 +63,7 @@ export default function CoreLayout({ children }: Props) {
                 <IconBrandGithub size={22} />
               </ActionIcon>
             </Tooltip>
-            <Tooltip
-              label="Contact Developer"
-              fz="sm"
-              position="left"
-              withArrow
-            >
+            <Tooltip label="Email Developer" fz="sm" position="left" withArrow>
               <ActionIcon
                 component="a"
                 href={process.env.NEXT_PUBLIC_EMAIL_LINK}
@@ -78,6 +73,18 @@ export default function CoreLayout({ children }: Props) {
                 c="dark.5"
               >
                 <IconMail size={22} />
+              </ActionIcon>
+            </Tooltip>
+            <Tooltip label="Laporkan Keluhan" fz="sm" position="left" withArrow>
+              <ActionIcon
+                component="a"
+                href={process.env.NEXT_PUBLIC_PHONE_LINK}
+                variant="subtle"
+                color="gray"
+                size="lg"
+                c="dark.5"
+              >
+                <IconPhone size={22} />
               </ActionIcon>
             </Tooltip>
           </Group>
