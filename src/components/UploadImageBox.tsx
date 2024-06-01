@@ -17,7 +17,7 @@ import {
 import { useDisclosure } from '@mantine/hooks';
 import { IconUpload } from '@tabler/icons-react';
 import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import classes from './Upload.module.css';
 
@@ -32,11 +32,13 @@ export function UploadImageBox() {
   const [service, setService] = useState<string | null>('detect');
   const [formOpened, { open, close }] = useDisclosure(false);
 
-  const hasMounted = useRef(false);
   useEffect(() => {
-    setTimeout(() => {
-      open();
-    }, 5 * 1000);
+    setTimeout(
+      () => {
+        open();
+      },
+      1.5 * 60 * 1000,
+    );
   }, []);
 
   const handleInputFile = () => {
