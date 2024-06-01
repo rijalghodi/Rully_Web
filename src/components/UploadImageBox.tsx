@@ -6,6 +6,7 @@ import {
   Center,
   Flex,
   Group,
+  Modal,
   Overlay,
   Stack,
   Tabs,
@@ -13,9 +14,10 @@ import {
   Title,
   UnstyledButton,
 } from '@mantine/core';
+import { useDisclosure } from '@mantine/hooks';
 import { IconUpload } from '@tabler/icons-react';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import classes from './Upload.module.css';
 
@@ -28,6 +30,14 @@ export function UploadImageBox() {
   const [file, setFile] = useState<File | null>(null);
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [service, setService] = useState<string | null>('detect');
+  const [formOpened, { open, close }] = useDisclosure(false);
+
+  const hasMounted = useRef(false);
+  useEffect(() => {
+    setTimeout(() => {
+      open();
+    }, 5 * 1000);
+  }, []);
 
   const handleInputFile = () => {
     const btn = document.getElementById('fileInput');
@@ -50,6 +60,34 @@ export function UploadImageBox() {
 
   return (
     <>
+      <Modal
+        opened={formOpened}
+        onClose={close}
+        size="md"
+        title={
+          <Title order={2} fz="lg" fw={600}>
+            Tunggu Sebentar...
+          </Title>
+        }
+        padding="lg"
+        centered
+      >
+        <Stack>
+          <Text>Sekarang Rully masih dalam tahap pengembangan. 🚀</Text>
+          <Text>
+            Kamu beruntung! Kamu bisa ikut{' '}
+            <span style={{ fontWeight: 600 }}>daftar tunggu</span> untuk
+            mendapat diskon dan prioritas saat perilisan Rully 👏
+          </Text>
+          <Button
+            component="a"
+            href="https://forms.gle/1E4SvgpVQ51K1Qwu8"
+            target="_blank"
+          >
+            Ikut Daftar Tunggu
+          </Button>
+        </Stack>
+      </Modal>
       <input
         type="file"
         id="fileInput"

@@ -3,7 +3,7 @@ import React from 'react';
 
 import { UploadImageBox } from '@/components/UploadImageBox';
 
-export default function Home() {
+export default function UploadPage() {
   return (
     <Container
       mih="calc(100vh - 60px - 60px)"
