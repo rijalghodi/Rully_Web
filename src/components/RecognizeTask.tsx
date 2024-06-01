@@ -95,7 +95,7 @@ export function RecognizeTask({ file, onInputFile }: Props) {
               {stack.map((item, j) => (
                 <Group gap={4} key={j}>
                   <Text span w={24}>
-                    {i * (detectedMarks.length > 10 ? 10 : 5) + j + 1}..
+                    {i * (detectedMarks.length > 10 ? 10 : 5) + j + 1}.
                   </Text>
                   <Text span tt="uppercase" fw={500}>
                     {item}
