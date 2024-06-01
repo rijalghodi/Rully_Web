@@ -29,7 +29,7 @@ export function GradeTask({ file, onInputFile }: Props) {
         return;
       }
       setDebNQuestion(nQuestions);
-    }, 1000);
+    }, 400);
 
     return () => clearTimeout(debounceTimeout);
   }, [nQuestions]);

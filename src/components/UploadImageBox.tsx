@@ -172,7 +172,7 @@ export function UploadImageBox() {
             </Tabs>
           </Flex>
           <Text fz="sm" c="dark.3" ta="center" mt="xl">
-            Rully bisa melakukan kesalahan. Cek kembali hasil koreksi.
+            Rully mungkin melakukan kesalahan. Periksa kembali hasil kerjanya.
           </Text>
         </Stack>
       )}
