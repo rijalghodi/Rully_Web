@@ -39,7 +39,7 @@ export function UploadImageBox() {
       },
       0.5 * 60 * 1000,
     );
-  }, []);
+  }, []); // eslint-disable-line
 
   const handleInputFile = () => {
     const btn = document.getElementById('fileInput');

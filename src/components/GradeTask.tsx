@@ -29,10 +29,11 @@ export function GradeTask({ file, onInputFile }: Props) {
         return;
       }
       setDebNQuestion(nQuestions);
-    }, 400);
+    }, 300);
 
     return () => clearTimeout(debounceTimeout);
   }, [nQuestions]);
+
   const [loading, setLoading] = useState(false);
 
   const handleGradeSheet = async () => {
