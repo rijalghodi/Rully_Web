@@ -83,7 +83,7 @@ export function UploadImageBox() {
           </Text>
           <Button
             component="a"
-            href="https://forms.gle/1E4SvgpVQ51K1Qwu8"
+            href={process.env.NEXT_PUBLIC_WAIT_LIST_LINK}
             target="_blank"
           >
             Ikut Daftar Tunggu
