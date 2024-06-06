@@ -1,6 +1,6 @@
 'use client';
 
-import { ActionIcon, AppShell, Group, Tooltip } from '@mantine/core';
+import { ActionIcon, AppShell, Button, Group, Tooltip } from '@mantine/core';
 import { Text } from '@mantine/core';
 import { IconBrandGithub, IconMail, IconPhone } from '@tabler/icons-react';
 import Image from 'next/image';
@@ -59,6 +59,7 @@ export default function CoreLayout({ children }: Props) {
                 color="gray"
                 size="lg"
                 c="dark.5"
+                visibleFrom="xs"
               >
                 <IconBrandGithub size={22} />
               </ActionIcon>
@@ -71,6 +72,7 @@ export default function CoreLayout({ children }: Props) {
                 color="gray"
                 size="lg"
                 c="dark.5"
+                visibleFrom="xs"
               >
                 <IconMail size={22} />
               </ActionIcon>
@@ -83,10 +85,21 @@ export default function CoreLayout({ children }: Props) {
                 color="gray"
                 size="lg"
                 c="dark.5"
+                visibleFrom="xs"
               >
                 <IconPhone size={22} />
               </ActionIcon>
             </Tooltip>
+            <Button
+              size="sm"
+              radius="xl"
+              component="a"
+              href={process.env.NEXT_PUBLIC_WAIT_LIST_LINK}
+              target="_blank"
+              variant="default"
+            >
+              Daftar Tunggu
+            </Button>
           </Group>
         </Group>
       </AppShell.Header>
