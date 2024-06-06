@@ -24,7 +24,25 @@ import classes from './Upload.module.css';
 import { GradeTask } from './GradeTask';
 import { RecognizeTask } from './RecognizeTask';
 
+import Sample1 from '~/sample1.png';
+import Sample2 from '~/sample2.png';
+import Sample3 from '~/sample3.png';
 import Sparkles from '~/sparkles.png';
+
+const examples = [
+  {
+    path: '/sample1.png',
+    image: Sample1,
+  },
+  {
+    path: '/sample2.png',
+    image: Sample2,
+  },
+  {
+    path: '/sample3.png',
+    image: Sample3,
+  },
+];
 
 export function UploadImageBox() {
   const [file, setFile] = useState<File | null>(null);
@@ -53,12 +71,45 @@ export function UploadImageBox() {
     }
   };
 
+  const handleUseSample = async (url: string) => {
+    // Fetch the file data as a blob
+    const response = await fetch(url);
+    const blob = await response.blob();
+
+    const name = url.substring(url.lastIndexOf('/') + 1);
+
+    // Create a new File object
+    const sampleFile = new File([blob], name, {
+      type: 'image/png',
+    });
+
+    setFile(sampleFile);
+  };
+
   useEffect(() => {
     if (file) {
       const url = URL.createObjectURL(file);
       setImageUrl(url);
     }
   }, [file]);
+
+  const Examples = () => {
+    return (
+      <Group justify="center" align="center" gap="xs">
+        {examples.map((v, i) => (
+          <UnstyledButton onClick={() => handleUseSample(v.path)} key={i}>
+            <Image
+              src={v.image}
+              alt={`Sample ${i}`}
+              width={44}
+              height={44}
+              style={{ borderRadius: 8 }}
+            />
+          </UnstyledButton>
+        ))}
+      </Group>
+    );
+  };
 
   return (
     <>
@@ -124,6 +175,10 @@ export function UploadImageBox() {
           >
             Unggah Gambar
           </Button>
+          <Stack align="center" gap="xs">
+            <Text>Atau gunakan gambar sample ini:</Text>
+            <Examples />
+          </Stack>
         </Stack>
       )}
       {file && imageUrl && (
@@ -175,6 +230,12 @@ export function UploadImageBox() {
                 <Text fz="xs" ta="center">
                   {file.name}
                 </Text>
+                <Stack align="center" gap="xs" mt="sm">
+                  <Text ta="center" fz="sm">
+                    Bisa gunakan gambar sample ini:
+                  </Text>
+                  <Examples />
+                </Stack>
               </Stack>
             </Group>
             <Tabs
